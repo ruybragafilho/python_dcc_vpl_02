@@ -6,25 +6,38 @@ class Conta:
     def __init__( self, numero ):
 
         self.__numero = numero
-        self._saldo = 0.0
+        self.__saldo = 0.0
 
+
+    # get numero
+    @property
+    def numero( self ):
+        return self.__numero
 
     # get saldo
     @property
     def saldo( self ):
-        return self._saldo       
+        return self.__saldo       
+
+
+    # set numero
+    @numero.setter
+    def numero( self, numero ):
+        self.__numero = numero        
+
+    # set saldo
+    @saldo.setter
+    def saldo( self, saldo ):
+        self.__saldo = saldo
 
 
     # Método depositar
     def depositar( self, valor ):
-
-        self._saldo += valor
-
+        self.saldo += valor
 
     # Método sacar
     def sacar( self, valor ):
-
-        self._saldo -= valor
+        self.saldo -= valor
 
 # Fim da definição da classe Conta
 
@@ -45,10 +58,15 @@ class ContaCorrente( Conta ):
     def taxa( self ):
         return self.__taxa            
 
+    # set taxa
+    @taxa.setter
+    def taxa( self, taxa ):
+        self.__taxa = taxa
+
 
     # metodo cobrar taxa
     def cobrar_taxa( self ):
-        self._saldo -= self.__taxa
+        self.saldo -= self.taxa
 
 # Fim da definição da classe ContaCorrente
 
@@ -69,10 +87,15 @@ class ContaPoupanca( Conta ):
     def juros( self ):
         return self.__juros    
 
+    # set juros
+    @juros.setter
+    def juros( self, juros ):
+        self.__juros = juros
+
 
     # Metodo aplicar_Juros
     def aplicar_juros( self ):
 
-        self._saldo = self._saldo * (1 + self.juros)
+        self.saldo = self.saldo * (1 + self.juros)
 
 # Fim da definição da classe ContaPoupanca
